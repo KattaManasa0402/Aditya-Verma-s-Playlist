@@ -1,0 +1,26 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+#include <string>
+    void solve(string inp,string op){
+        if(inp.size()==0){
+            cout<<op<<" ";
+for this one 
+            return;
+        }
+        string op1=op;
+        string op2=op;
+        char c=inp[0];
+        op1.push_back(tolower(c));
+        op2.push_back(toupper(c));
+        inp.erase(inp.begin()+0);
+        solve(inp,op1);
+        solve(inp,op2);
+        return;
+        
+    }
+int main() {
+    string str="ab";
+    solve(str,"");
+    return 0;
+}
