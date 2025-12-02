@@ -1,0 +1,42 @@
+// Online C++ compiler to run C++ program online
+//Generate Balanced Parenthesis for n=3
+using namespace std;
+#include <string>
+#include <iostream>
+void solve(int op,int cl,string output){
+    if(op==0 && cl==0){
+        cout<<output<<" ";
+        return;
+    }
+    string otp1=output;
+    string otp2=output;
+    if(op==cl){
+        otp1.push_back('(');
+        solve(op-1,cl,otp1);
+    }
+    else{
+    if(op>0){
+        otp1.push_back('('); 
+        solve(op-1,cl,otp1);
+        
+    }
+    if(cl>op){
+        otp2.push_back(')');
+        solve(op,cl-1,otp2);
+    }
+    }
+}
+int main() {
+    int n;
+    cin>>n;
+    int op=n;
+    int cl=n;
+    string output="";
+    output.push_back('(');
+    op--;
+    solve(op,cl,output);
+    return 0;
+}
+
+# OUTPUT 
+((())) (()()) (())() ()(()) ()()()
