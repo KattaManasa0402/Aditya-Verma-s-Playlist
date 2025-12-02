@@ -1,0 +1,36 @@
+Letter Case Permutation
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+#include <string>
+    void solve(string inp,string op){
+        if(inp.size()==0){
+            cout<<op<<" ";
+            return;
+        }
+        char c=inp[0];
+        inp.erase(inp.begin()+0);
+        if(isdigit(c)){
+            op.push_back(c);
+            solve(inp,op);
+        }
+        else{
+            string op1=op;
+        string op2=op;
+        
+        op1.push_back(tolower(c));
+        op2.push_back(toupper(c));
+        solve(inp,op1);
+        solve(inp,op2);
+        return;
+        }
+        
+        
+       
+        
+    }
+int main() {
+    string str="a1b2";
+    solve(str,"");
+    return 0;
+} 
