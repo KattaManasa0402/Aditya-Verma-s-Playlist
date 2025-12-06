@@ -1,0 +1,21 @@
+//https://www.geeksforgeeks.org/problems/print-n-bit-binary-numbers-having-more-1s-than-0s0252/1
+
+class Solution{
+  public:
+  void solve(int n,int ones,int zeroes,string otp,vector<string>&sol){
+    //base case 
+    if(n==0){
+        sol.push_back(otp);
+        return;
+    }
+    solve(n-1,ones+1,zeroes,otp+'1',sol);
+    if(ones>zeroes){
+        solve(n-1,ones,zeroes+1,otp+'0',sol);
+    }
+}
+    vector<string> NBitBinary(int n) {
+        vector<string>sol;
+        solve(n-1,1,0,"1",sol);
+        return sol;
+    }
+};
