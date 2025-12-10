@@ -1,0 +1,27 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int solve(vector<int>&wt,vector<int>&val,int cap,int n){
+    //base condition 
+    if(n<0 || cap==0){
+        return 0;
+    }
+   if(wt[n]<=cap){
+       return max(val[n]+solve(wt,val,cap-wt[n],n-1),solve(wt,val,cap,n-1));
+   }
+   else {
+       return solve(wt,val,cap,n-1);
+   }
+}
+       
+int main() {
+    vector<int>wt={1,3,4,5};
+    vector<int>val={1,4,5,1};
+    int cap=7;
+    int n=wt.size()-1;
+    int max_profit=solve(wt,val,cap,n);
+    cout<<max_profit;
+
+    return 0;
+}
