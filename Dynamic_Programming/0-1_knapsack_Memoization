@@ -1,0 +1,39 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+ int dp[100][100];
+   
+int solve(vector<int>wt,vector<int>val,int cap,int n){
+    //base case
+    if(n<0 || cap==0){
+        return 0;
+    }
+    if(dp[n][cap]!=-1){
+        return dp[n][cap];
+    }
+    else{
+    int max_profit=0;
+    if(cap>=wt[n]){
+        dp[n][cap]=max_profit= max((val[n]+solve(wt,val,cap-wt[n],n-1)),solve(wt,val,cap,n-1));
+    }
+    
+        //exclude so skip this but in future u can include right
+        else{
+        dp[n][cap]=solve(wt,val,cap,n-1);
+        }
+    }
+        return dp[n][cap];
+    
+}
+int main() {
+    vector<int> wt={2,4,6,7};
+    vector<int> val={3,4,5,6};
+    int cap=20;
+    int n=wt.size();
+     memset(dp,-1,sizeof(dp));
+    int max_profit=solve(wt,val,cap,n-1);
+    cout<<max_profit;
+
+    return 0;
+}
